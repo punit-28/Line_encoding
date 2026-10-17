@@ -1,0 +1,8 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='900' height='260'>
+<rect width='100%' height='100%' fill='white'/>
+<text x='40' y='20' font-family='monospace' font-size='14'>Original signal vs. decoder staircase</text>
+<polyline fill='none' stroke='#f97316' stroke-width='2' points='40,130 94.6667,81.2048 149.333,43.0177 204,88.9981 258.667,115.6 313.333,197.61 368,196.618 422.667,189.816 477.333,130 532,70.1836 586.667,63.3823 641.333,62.3903 696,144.4 750.667,171.002 805.333,216.982 860,178.795 '/>
+<polyline fill='none' stroke='#2563eb' stroke-width='2' points='40,124 94.6667,124 94.6667,76 149.333,76 149.333,40 204,40 204,88 258.667,88 258.667,112 313.333,112 313.333,196 368,196 368,196 422.667,196 422.667,184 477.333,184 477.333,124 532,124 532,76 586.667,76 586.667,64 641.333,64 641.333,64 696,64 696,148 750.667,148 750.667,172 805.333,172 805.333,220 860,220 860,184 914.667,184 '/>
+<text x='680' y='20' font-family='monospace' font-size='12' fill='#f97316'>original</text>
+<text x='680' y='36' font-family='monospace' font-size='12' fill='#2563eb'>decoder staircase</text>
+</svg>
