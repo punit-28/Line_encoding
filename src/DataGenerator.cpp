@@ -20,6 +20,7 @@ std::vector<int> DataGenerator::generateWithZeroRuns(int length, const std::vect
 
     // Pick non-overlapping starting positions for each forced run,
     // spacing them out across the available length.
+    // here is we use cursor to track the current position in the data vector, and remainingSlack to determine how much space we have left to distribute gaps between runs. We use a uniform distribution to randomly select gaps between runs, ensuring that they do not overlap and fit within the total length of the data vector.
     int cursor = 0;
     int remainingSlack = length - totalRunSpace;
     std::uniform_int_distribution<int> gapDist(0, std::max(1, remainingSlack / static_cast<int>(runLengths.size() + 1)));

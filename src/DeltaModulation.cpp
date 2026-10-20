@@ -16,7 +16,7 @@ std::vector<int> DeltaModulation::encode(const std::vector<double>& samples) {
     }
     return bits;
 }
-
+// here we use a simple approach to reconstruct the staircase signal from the bitstream. We initialize the staircase level to zero and iterate through the bits, adjusting the level up or down based on whether the bit is 1 or 0, respectively. The resulting staircase levels are stored in a vector and returned.
 std::vector<double> DeltaModulation::decode(const std::vector<int>& bits) const {
     std::vector<double> staircase;
     staircase.reserve(bits.size());
