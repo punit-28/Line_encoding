@@ -52,7 +52,7 @@ static void printBits(const std::vector<int> &bits)
         std::cout << b;
     std::cout << "\n";
 }
-
+// ---------------------------------------------------------------------------
 // A registry entry for a selectable line coding scheme. Using a table of
 // {label, factory} pairs (rather than an if/else or switch ladder) is what
 // lets main() dispatch on the user's numeric choice with a single index
