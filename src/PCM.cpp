@@ -35,7 +35,7 @@ std::vector<double> PCM::decode(const std::vector<int>& bits) const {
         for (int b = 0; b < quantizationBits_; ++b) {
             level = (level << 1) | bits[s * quantizationBits_ + b];
         }
-        // Reconstruct as the midpoint of the quantization interval.
+        // Reconstruct as the midpoint of the quantization interval. here this we want to check also double over flow beacause the range is 10^15;
         double voltage = minVoltage_ + (level + 0.5) * stepSize_;
         staircase.push_back(voltage);
     }
