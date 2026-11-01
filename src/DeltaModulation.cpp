@@ -1,29 +1,45 @@
+
 #include "DeltaModulation.h"
 
 std::vector<int> DeltaModulation::encode(const std::vector<double>& samples) {
-    std::vector<int> bits;
-    bits.reserve(samples.size());
-    double staircase = samples.empty() ? 0.0 : samples.front();
+    std::vector<int> encodedBits;
+    encodedBits.reserve(samples.size());
 
-    for (double s : samples) {
-        if (s > staircase) {
-            bits.push_back(1);
-            staircase += stepSize_;
-        } else {
-            bits.push_back(0);
-            staircase -= stepSize_;
+    double currentLevel = samples.empty() ? 0.0 : samples[0];
+
+    for (int i = 0; i < samples.size(); i++) {
+        int bitValue = 0;
+
+        if (samples[i] > currentLevel) {
+            bitValue = 1;
+            currentLevel = currentLevel + stepSize_;
+        } 
+        else {
+            currentLevel = currentLevel - stepSize_;
         }
+
+        encodedBits.push_back(bitValue);
     }
-    return bits;
+
+    return encodedBits;
 }
-// here we use a simple approach to reconstruct the staircase signal from the bitstream. We initialize the staircase level to zero and iterate through the bits, adjusting the level up or down based on whether the bit is 1 or 0, respectively. The resulting staircase levels are stored in a vector and returned.
-std::vector<double> DeltaModulation::decode(const std::vector<int>& bits) const {
-    std::vector<double> staircase;
-    staircase.reserve(bits.size());
-    double level = 0.0;
-    for (int b : bits) {
-        level += (b == 1) ? stepSize_ : -stepSize_;
-        staircase.push_back(level);
+
+std::vector<double> DeltaModulation::decode(const std::vector<int>& bits) {
+    std::vector<double> decodedSignal;
+    decodedSignal.reserve(bits.size());
+
+    double previousLevel = 0.0;
+
+    for (int i = 0; i < bits.size(); i++) {
+        if (bits[i] == 1) {
+            previousLevel += stepSize_;
+        } 
+        else {
+            previousLevel -= stepSize_;
+        }
+
+        decodedSignal.push_back(previousLevel);
     }
-    return staircase;
+
+    return decodedSignal;
 }
